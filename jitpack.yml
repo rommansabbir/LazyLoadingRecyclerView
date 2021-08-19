@@ -1,2 +1,3 @@
 install:
-  - ./gradlew build :lib:publishToMavenLocal
+  - ./gradlew :moka:build :moka:publishToMavenLocal -x :app:LazyLoadingRecyclerView
+  - find . -name "*.aar"
