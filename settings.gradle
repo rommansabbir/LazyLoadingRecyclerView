@@ -9,4 +9,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "LazyLoadingRecyclerViewDemo"
 include ':app'
-include ':app:LazyLoadingRecyclerView'
+include ':LazyLoadingRecyclerView'
