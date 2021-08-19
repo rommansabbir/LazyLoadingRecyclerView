@@ -52,6 +52,9 @@ project.afterEvaluate {
         publications {
             release(MavenPublication) {
                 from components.release
+                groupId = 'com.github.rommansabbir'
+                artifactId = 'LazyLoadingRecyclerView'
+                version = '1.0'
             }
         }
     }
