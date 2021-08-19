@@ -3,6 +3,9 @@ plugins {
     id 'kotlin-android'
     id 'maven-publish'
 }
+group = 'com.github.rommansabbir'
+version = '1.0'
+
 
 android {
     compileSdk 31
