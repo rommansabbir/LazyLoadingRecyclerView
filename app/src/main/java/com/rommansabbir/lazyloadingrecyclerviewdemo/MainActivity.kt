@@ -4,12 +4,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rommansabbir.lazyloadingrecyclerview.LazyLoadingRecyclerView
 import com.rommansabbir.lazyloadingrecyclerview.SpeedyLinearLayoutManager
 import com.rommansabbir.lazyloadingrecyclerview.attachSpeedyLayoutManager
 import com.rommansabbir.lazyloadingrecyclerviewdemo.databinding.ActivityMainBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.random.Random
@@ -38,7 +39,7 @@ class MainActivity : AppCompatActivity(), LazyLoadingRecyclerView.Listener {
         lazyLoadingRecyclerView = LazyLoadingRecyclerView.getInstance()
 
         // Faking data request
-        lifecycleScope.launch {
+        CoroutineScope(Dispatchers.Main).launch {
             binding.pbLoading.visibility = View.VISIBLE
             delay(1000)
             adapter.addDataSet(getRandomList())
@@ -68,7 +69,7 @@ class MainActivity : AppCompatActivity(), LazyLoadingRecyclerView.Listener {
 
     override fun loadMore() {
         // Faking load more data request, infinite scrolling
-        lifecycleScope.launch {
+        CoroutineScope(Dispatchers.Main).launch {
             binding.pbLoadingBottom.visibility = View.VISIBLE
             delay(1000)
             adapter.addDataSet(getRandomList())
@@ -79,7 +80,7 @@ class MainActivity : AppCompatActivity(), LazyLoadingRecyclerView.Listener {
     private val listener = object : LazyLoadingRecyclerView.Listener{
         override fun loadMore() {
             // Faking load more data request, infinite scrolling
-            lifecycleScope.launch {
+            CoroutineScope(Dispatchers.Main).launch {
                 binding.pbLoadingBottom.visibility = View.VISIBLE
                 delay(1000)
                 adapter.addDataSet(getRandomList())
